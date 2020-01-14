@@ -1,0 +1,7635 @@
+{
+	"info": {
+		"_postman_id": "a4165b60-2451-4120-bc29-58783f92b678",
+		"name": "Stripe API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Core Resources",
+			"item": [
+				{
+					"name": "Balance",
+					"item": [
+						{
+							"name": "Retrieve Balance",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/balance",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"balance"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Balance Transactions",
+					"item": [
+						{
+							"name": "Retrieve a balance transaction",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/balance_transactions/txn_1F7YnJGCrGF7V6ZERqsarxp7",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"balance_transactions",
+										"txn_1F7YnJGCrGF7V6ZERqsarxp7"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all balance transactions",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/balance_transactions?limit=3",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"balance_transactions"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "3cab1dbf-0717-4964-ba03-f014df805412",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "49665d85-f19f-4464-ba86-6fe735203ddd",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Charges",
+					"item": [
+						{
+							"name": "Create a charge",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "Stripe-Account",
+										"value": "{{connect_account_id}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "amount",
+											"value": "500",
+											"type": "text"
+										},
+										{
+											"key": "currency",
+											"value": "usd",
+											"type": "text"
+										},
+										{
+											"key": "source",
+											"value": "tok_visa",
+											"type": "text"
+										},
+										{
+											"key": "statement_descriptor",
+											"value": "EX DESC",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "customer",
+											"value": "{{customer_id}}",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "transfer_data[destination]",
+											"value": "{{connect_account_id}}",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "on_behalf_of",
+											"value": "{{connect_account_id}}",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "capture",
+											"value": "false",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/charges",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"charges"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve a charge",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/charges/ch_1F5EWzGCrGF7V6ZE7xo2maPj",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"charges",
+										"ch_1F5EWzGCrGF7V6ZE7xo2maPj"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update a charge",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "metadata[order_id]",
+											"value": "1234",
+											"type": "text"
+										},
+										{
+											"key": "customer",
+											"value": "{{customer_id}}",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/charges/ch_1F5EWzGCrGF7V6ZE7xo2maPj",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"charges",
+										"ch_1F5EWzGCrGF7V6ZE7xo2maPj"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Capture a charge",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "amount",
+											"value": "400",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/charges/ch_1F7mbUGCrGF7V6ZEy0mH7guD/capture",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"charges",
+										"ch_1F7mbUGCrGF7V6ZEy0mH7guD",
+										"capture"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all charges",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/charges?limit=3",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"charges"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Customers",
+					"item": [
+						{
+							"name": "Create a customer",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "source",
+											"value": "tok_visa",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "Joe Customer",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "joecustomer@test.com",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "This is Joe Customer",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/customers",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"customers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve a Customer",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/customers/{{customer_id}}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"customers",
+										"{{customer_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update a Customer",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "source",
+											"value": "tok_mastercard",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/customers/{{customer_id}}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"customers",
+										"{{customer_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete a customer",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/customers/cus_Fd2ozj1rGMbReA",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"customers",
+										"cus_Fd2ozj1rGMbReA"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all Customers",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/customers?limit=3",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"customers"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Disputes",
+					"item": [
+						{
+							"name": "Retrieve a dispute",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/disputes/dp_1F7mp7GCrGF7V6ZEUZsjW7va",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"disputes",
+										"dp_1F7mp7GCrGF7V6ZEUZsjW7va"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update a dispute",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "metadata[order_id]",
+											"value": "1234",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/disputes/dp_1F7mp7GCrGF7V6ZEUZsjW7va",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"disputes",
+										"dp_1F7mp7GCrGF7V6ZEUZsjW7va"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Close a dispute",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/disputes/dp_1F7mp7GCrGF7V6ZEUZsjW7va/close",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"disputes",
+										"dp_1F7mp7GCrGF7V6ZEUZsjW7va",
+										"close"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all disputes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/disputes",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"disputes"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Events",
+					"item": [
+						{
+							"name": "Retrieve an event",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/events/evt_1F7n8mGCrGF7V6ZETVihKcUf",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"events",
+										"evt_1F7n8mGCrGF7V6ZETVihKcUf"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all events",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/events?limit=3",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"events"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Files",
+					"item": [
+						{
+							"name": "Create a file",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "purpose",
+											"value": "dispute_evidence",
+											"type": "text"
+										},
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/Users/mattmitchell/Documents/Screenshots/example-file.png"
+										},
+										{
+											"key": "file_link_data[create]",
+											"value": "true",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://files.stripe.com/v1/files",
+									"protocol": "https",
+									"host": [
+										"files",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"files"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve a file",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://files.stripe.com/v1/files/file_1F7nVKGCrGF7V6ZEi68rMU3c",
+									"protocol": "https",
+									"host": [
+										"files",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"files",
+										"file_1F7nVKGCrGF7V6ZEi68rMU3c"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all files",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://files.stripe.com/v1/files",
+									"protocol": "https",
+									"host": [
+										"files",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"files"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "File Links",
+					"item": [
+						{
+							"name": "Create a file link",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "file",
+											"value": "file_1F7nVKGCrGF7V6ZEi68rMU3c",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/file_links",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"file_links"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve a file link",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/file_links/link_1F7nfpGCrGF7V6ZEwsbnIjHO",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"file_links",
+										"link_1F7nfpGCrGF7V6ZEwsbnIjHO"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update a file link",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "metadata[order_id]",
+											"value": "1234",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/file_links/link_1F7nfpGCrGF7V6ZEwsbnIjHO",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"file_links",
+										"link_1F7nfpGCrGF7V6ZEwsbnIjHO"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all file links",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/file_links",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"file_links"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "PaymentIntents",
+					"item": [
+						{
+							"name": "Create a PaymentIntent",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "amount",
+											"value": "1000",
+											"type": "text"
+										},
+										{
+											"key": "currency",
+											"value": "usd",
+											"type": "text"
+										},
+										{
+											"key": "capture_method",
+											"value": "automatic",
+											"type": "text"
+										},
+										{
+											"key": "confirm",
+											"value": "true",
+											"type": "text"
+										},
+										{
+											"key": "customer",
+											"value": "{{customer_id}}",
+											"type": "text"
+										},
+										{
+											"key": "payment_method",
+											"value": "card_1F5FrAGCrGF7V6ZEfKdGpCQQ",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/payment_intents",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"payment_intents"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve a PaymentIntent",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/payment_intents/pi_1F5EctGCrGF7V6ZElBCVk4Pt",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"payment_intents",
+										"pi_1F5EctGCrGF7V6ZElBCVk4Pt"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update a PaymentIntent",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "metadata[order_id]",
+											"value": "1234",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/payment_intents/pi_1F7nrSGCrGF7V6ZEUQThCC3l",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"payment_intents",
+										"pi_1F7nrSGCrGF7V6ZEUQThCC3l"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Confirm a PaymentIntent",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "payment_method",
+											"value": "pm_card_visa",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/payment_intents/pi_1ESsBCGCrGF7V6ZEyHTPyzMY/confirm",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"payment_intents",
+										"pi_1ESsBCGCrGF7V6ZEyHTPyzMY",
+										"confirm"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Capture a PaymentIntent",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/payment_intents/pi_1F5EcdGCrGF7V6ZEroW0b0vO/capture",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"payment_intents",
+										"pi_1F5EcdGCrGF7V6ZEroW0b0vO",
+										"capture"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cancel a PaymentIntent",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/payment_intents/pi_1ESsBCGCrGF7V6ZEyHTPyzMY/cancel",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"payment_intents",
+										"pi_1ESsBCGCrGF7V6ZEyHTPyzMY",
+										"cancel"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all PaymentIntents",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/payment_intents?limit=3",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"payment_intents"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "SetupIntents",
+					"item": [
+						{
+							"name": "Create a SetupIntent",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "payment_method_types[]",
+											"value": "card",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/setup_intents",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"setup_intents"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve a SetupIntent",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/setup_intents/seti_1F7pMbGCrGF7V6ZEWKaF3EOE",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"setup_intents",
+										"seti_1F7pMbGCrGF7V6ZEWKaF3EOE"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update a SetupIntent",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "metadata[user_id]",
+											"value": "1234",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/setup_intents/seti_1F7pMbGCrGF7V6ZEWKaF3EOE",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"setup_intents",
+										"seti_1F7pMbGCrGF7V6ZEWKaF3EOE"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Confirm a SetupIntent",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "payment_method",
+											"value": "pm_card_visa",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/setup_intents/seti_1F7pMbGCrGF7V6ZEWKaF3EOE/confirm",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"setup_intents",
+										"seti_1F7pMbGCrGF7V6ZEWKaF3EOE",
+										"confirm"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cancel a SetupIntent",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "",
+											"value": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/setup_intents/seti_1F7pQGGCrGF7V6ZENTR3JLAr/cancel",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"setup_intents",
+										"seti_1F7pQGGCrGF7V6ZENTR3JLAr",
+										"cancel"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all SetupIntents",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/setup_intents?limit=3",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"setup_intents"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Payouts",
+					"item": [
+						{
+							"name": "Create a payout",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "amount",
+											"value": "5000",
+											"type": "text"
+										},
+										{
+											"key": "currency",
+											"value": "usd",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/payouts",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"payouts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all payouts",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/payouts",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"payouts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve a payout",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://api.stripe.com/v1/payouts/po_1F7XrJGCrGF7V6ZEoRy3uphg",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"payouts",
+										"po_1F7XrJGCrGF7V6ZEoRy3uphg"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update a payout",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "metadata[order_id]",
+											"value": "1234",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/payouts/po_1F7XrJGCrGF7V6ZEoRy3uphg",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"payouts",
+										"po_1F7XrJGCrGF7V6ZEoRy3uphg"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cancel a payout",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/payouts/po_1F7XrJGCrGF7V6ZEoRy3uphg/cancel",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"payouts",
+										"po_1F7XrJGCrGF7V6ZEoRy3uphg",
+										"cancel"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Refunds",
+					"item": [
+						{
+							"name": "Create a refund",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "charge",
+											"value": "ch_1F7pYNGCrGF7V6ZEErat3P9e",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/refunds",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"refunds"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve a refund",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/refunds/re_1F7pYpGCrGF7V6ZEoB7YvBjs",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"refunds",
+										"re_1F7pYpGCrGF7V6ZEoB7YvBjs"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update a refund",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "metadata[order_id]",
+											"value": "1234",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/refunds/re_1F7pYpGCrGF7V6ZEoB7YvBjs",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"refunds",
+										"re_1F7pYpGCrGF7V6ZEoB7YvBjs"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all refunds",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/refunds?limit=3",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"refunds"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Tokens",
+					"item": [
+						{
+							"name": "Create a card token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "2ee638e5-879e-4869-9b88-a9d44bceb88f",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "card[number]",
+											"value": "4242424242424242",
+											"type": "text"
+										},
+										{
+											"key": "card[exp_month]",
+											"value": "12",
+											"type": "text"
+										},
+										{
+											"key": "card[exp_year]",
+											"value": "2019",
+											"type": "text"
+										},
+										{
+											"key": "card[cvc]",
+											"value": "123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/tokens",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"tokens"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create a bank account token",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "bank_account[country]",
+											"value": "US",
+											"type": "text"
+										},
+										{
+											"key": "bank_account[currency]",
+											"value": "usd",
+											"type": "text"
+										},
+										{
+											"key": "bank_account[account_holder_name]",
+											"value": "Jenny Rosen",
+											"type": "text"
+										},
+										{
+											"key": "bank_account[account_holder_type]",
+											"value": "individual",
+											"type": "text"
+										},
+										{
+											"key": "bank_account[routing_number]",
+											"value": "110000000",
+											"type": "text"
+										},
+										{
+											"key": "bank_account[account_number]",
+											"value": "000123456789",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/tokens",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"tokens"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create a PII Token",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "pii[id_number]",
+											"value": "000000000",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/tokens",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"tokens"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create an account token",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "account[individual][first_name]",
+											"value": "Jane",
+											"type": "text"
+										},
+										{
+											"key": "account[individual][last_name]",
+											"value": "Doe",
+											"type": "text"
+										},
+										{
+											"key": "account[tos_shown_and_accepted]",
+											"value": "true",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/tokens",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"tokens"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve a token",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/tokens/btok_1F5EwEGCrGF7V6ZES01sKjJ8",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"tokens",
+										"btok_1F5EwEGCrGF7V6ZES01sKjJ8"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Payment Methods",
+			"item": [
+				{
+					"name": "PaymentMethods",
+					"item": [
+						{
+							"name": "Create a PaymentMethod",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "type",
+											"value": "card",
+											"type": "text"
+										},
+										{
+											"key": "card[number]",
+											"value": "4242424242424242",
+											"type": "text"
+										},
+										{
+											"key": "card[exp_month]",
+											"value": "12",
+											"type": "text"
+										},
+										{
+											"key": "card[exp_year]",
+											"value": "20",
+											"type": "text"
+										},
+										{
+											"key": "card[cvc]",
+											"value": "000",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/payment_methods",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"payment_methods"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve a PaymentMethod",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/payment_methods/card_1F5FrAGCrGF7V6ZEfKdGpCQQ",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"payment_methods",
+										"card_1F5FrAGCrGF7V6ZEfKdGpCQQ"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update a PaymentMethod",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "metadata[order_id]",
+											"value": "1234",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/payment_methods/card_1F5FrAGCrGF7V6ZEfKdGpCQQ",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"payment_methods",
+										"card_1F5FrAGCrGF7V6ZEfKdGpCQQ"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List a Customer's PaymentMethods",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/payment_methods?customer={{customer_id}}&type=card",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"payment_methods"
+									],
+									"query": [
+										{
+											"key": "customer",
+											"value": "{{customer_id}}"
+										},
+										{
+											"key": "type",
+											"value": "card"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Attach a PaymentMethod to a customer",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "customer",
+											"value": "{{customer_id}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/payment_methods/pm_card_visa/attach",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"payment_methods",
+										"pm_card_visa",
+										"attach"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Detach a PaymentMethod from a customer",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/payment_methods/pm_1F7qjmGCrGF7V6ZEoCwOb4sy/detach",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"payment_methods",
+										"pm_1F7qjmGCrGF7V6ZEoCwOb4sy",
+										"detach"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Bank Accounts",
+					"item": [
+						{
+							"name": "Create a bank account",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "source[object]",
+											"value": "bank_account",
+											"type": "text"
+										},
+										{
+											"key": "source[country]",
+											"value": "us",
+											"type": "text"
+										},
+										{
+											"key": "source[currency]",
+											"value": "usd",
+											"type": "text"
+										},
+										{
+											"key": "source[account_holder_name]",
+											"value": "Jenny Rosen",
+											"type": "text"
+										},
+										{
+											"key": "source[account_holder_type]",
+											"value": "individual",
+											"type": "text"
+										},
+										{
+											"key": "source[routing_number]",
+											"value": "110000000",
+											"type": "text"
+										},
+										{
+											"key": "source[account_number]",
+											"value": "000123456789",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/customers/{{customer_id}}/sources",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"customers",
+										"{{customer_id}}",
+										"sources"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve a Bank Account",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/customers/{{customer_id}}/sources/ba_1F7qmHGCrGF7V6ZEya4auqya",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"customers",
+										"{{customer_id}}",
+										"sources",
+										"ba_1F7qmHGCrGF7V6ZEya4auqya"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update a bank account",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "metadata[key]",
+											"value": "value",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/customers/{{customer_id}}/sources/ba_1F7qmHGCrGF7V6ZEya4auqya",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"customers",
+										"{{customer_id}}",
+										"sources",
+										"ba_1F7qmHGCrGF7V6ZEya4auqya"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Verify a bank account",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "amounts[]",
+											"value": "32",
+											"type": "text"
+										},
+										{
+											"key": "amounts[]",
+											"value": "45",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/customers/{{customer_id}}/sources/ba_1F5EzcGCrGF7V6ZEqlibeus7/verify",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"customers",
+										"{{customer_id}}",
+										"sources",
+										"ba_1F5EzcGCrGF7V6ZEqlibeus7",
+										"verify"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete a bank account",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/customers/{{customer_id}}/sources/ba_1F7qmHGCrGF7V6ZEya4auqya",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"customers",
+										"{{customer_id}}",
+										"sources",
+										"ba_1F7qmHGCrGF7V6ZEya4auqya"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all bank accounts",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/customers/{{customer_id}}/sources?object=bank_account&limit=3",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"customers",
+										"{{customer_id}}",
+										"sources"
+									],
+									"query": [
+										{
+											"key": "object",
+											"value": "bank_account"
+										},
+										{
+											"key": "limit",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Cards",
+					"item": [
+						{
+							"name": "Create a card",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "source",
+											"value": "tok_visa",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/customers/{{customer_id}}/sources",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"customers",
+										"{{customer_id}}",
+										"sources"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve a card",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/customers/{{customer_id}}/sources/card_1F87InGCrGF7V6ZEKrUOmC6J",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"customers",
+										"{{customer_id}}",
+										"sources",
+										"card_1F87InGCrGF7V6ZEKrUOmC6J"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update a card",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{secret_key}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+										"key": "Authorization",
+										"value": "Bearer {{secret_key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Jenny Rosen",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/customers/{{customer_id}}/sources/card_1F87InGCrGF7V6ZEKrUOmC6J",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"customers",
+										"{{customer_id}}",
+										"sources",
+										"card_1F87InGCrGF7V6ZEKrUOmC6J"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete a card",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{secret_key}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/customers/{{customer_id}}/sources/card_1F87InGCrGF7V6ZEKrUOmC6J",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"customers",
+										"{{customer_id}}",
+										"sources",
+										"card_1F87InGCrGF7V6ZEKrUOmC6J"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all cards",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/customers/{{customer_id}}/sources?object=card",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"customers",
+										"{{customer_id}}",
+										"sources"
+									],
+									"query": [
+										{
+											"key": "object",
+											"value": "card"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Sources",
+					"item": [
+						{
+							"name": "Create a new source",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "type",
+											"value": "ach_credit_transfer",
+											"type": "text"
+										},
+										{
+											"key": "currency",
+											"value": "usd",
+											"type": "text"
+										},
+										{
+											"key": "owner[email]",
+											"value": "jenny.rosen@example.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/sources",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"sources"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve a source",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/sources/src_1F88LbGCrGF7V6ZETYEZ6mSW",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"sources",
+										"src_1F88LbGCrGF7V6ZETYEZ6mSW"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update a source",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "metadata[order_id]",
+											"value": "1234",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/sources/src_1F88LbGCrGF7V6ZETYEZ6mSW",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"sources",
+										"src_1F88LbGCrGF7V6ZETYEZ6mSW"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Attach a source",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "source",
+											"value": "src_1F88LbGCrGF7V6ZETYEZ6mSW",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/customers/{{customer_id}}/sources",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"customers",
+										"{{customer_id}}",
+										"sources"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Detach a source",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/customers/{{customer_id}}/sources/src_1F88LbGCrGF7V6ZETYEZ6mSW",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"customers",
+										"{{customer_id}}",
+										"sources",
+										"src_1F88LbGCrGF7V6ZETYEZ6mSW"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Checkout",
+			"item": [
+				{
+					"name": "Sessions",
+					"item": [
+						{
+							"name": "Create a Session",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "cancel_url",
+											"value": "https://example.com/cancel",
+											"type": "text"
+										},
+										{
+											"key": "payment_method_types[]",
+											"value": "card",
+											"type": "text"
+										},
+										{
+											"key": "success_url",
+											"value": "https://example.com/success",
+											"type": "text"
+										},
+										{
+											"key": "line_items[][amount]",
+											"value": "1500",
+											"type": "text"
+										},
+										{
+											"key": "line_items[][description]",
+											"value": "Comfortable cotton t-shirt",
+											"type": "text"
+										},
+										{
+											"key": "line_items[][name]",
+											"value": "T-shirt",
+											"type": "text"
+										},
+										{
+											"key": "line_items[][quantity]",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "line_items[][currency]",
+											"value": "usd",
+											"type": "text"
+										},
+										{
+											"key": "line_items[][images][]",
+											"value": "https://cdna.4imprint.com/prod/extras/006729/391089/700/1.jpg",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/checkout/sessions",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"checkout",
+										"sessions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve a Session",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/checkout/sessions/cs_test_1nL3hOZylWskfkOnfCef7TXSMQjaHpcOctS2FeZgrXZBN8HgQ8qJeQBL",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"checkout",
+										"sessions",
+										"cs_test_1nL3hOZylWskfkOnfCef7TXSMQjaHpcOctS2FeZgrXZBN8HgQ8qJeQBL"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Billing",
+			"item": [
+				{
+					"name": "Coupons",
+					"item": [
+						{
+							"name": "Create a coupon",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "percent_off",
+											"value": "25",
+											"type": "text"
+										},
+										{
+											"key": "duration",
+											"value": "repeating",
+											"type": "text"
+										},
+										{
+											"key": "duration_in_months",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "id",
+											"value": "25OFF",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/coupons",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"coupons"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve a coupon",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/coupons/25OFF",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"coupons",
+										"25OFF"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update a coupon",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "metadata[order_id]",
+											"value": "1234",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/coupons/25OFF",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"coupons",
+										"25OFF"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete a coupon",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/coupons/25OFF",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"coupons",
+										"25OFF"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all coupons",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/coupons",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"coupons"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Credit Notes",
+					"item": [
+						{
+							"name": "Create a credit note",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "invoice",
+											"value": "in_1EIPAtGCrGF7V6ZER5jrEJ54",
+											"type": "text"
+										},
+										{
+											"key": "amount",
+											"value": "500",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/credit_notes",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"credit_notes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve a credit note",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/credit_notes/cn_1F89akGCrGF7V6ZEp6f50Vdd",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"credit_notes",
+										"cn_1F89akGCrGF7V6ZEp6f50Vdd"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update a credit note",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "metadata[order_id]",
+											"value": "1234",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/credit_notes/cn_1F89akGCrGF7V6ZEp6f50Vdd",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"credit_notes",
+										"cn_1F89akGCrGF7V6ZEp6f50Vdd"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Void a credit note",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/credit_notes/cn_1F89akGCrGF7V6ZEp6f50Vdd/void",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"credit_notes",
+										"cn_1F89akGCrGF7V6ZEp6f50Vdd",
+										"void"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all credit notes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/credit_notes",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"credit_notes"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Customer Balance Transaction",
+					"item": [
+						{
+							"name": "Create a customer balance transaction",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "amount",
+											"value": "500",
+											"type": "text"
+										},
+										{
+											"key": "currency",
+											"value": "usd",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/customers/{{customer_id}}/balance_transactions",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"customers",
+										"{{customer_id}}",
+										"balance_transactions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve a customer balance transaction",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/customers/{{customer_id}}/balance_transactions/cbtxn_1F89gAGCrGF7V6ZENYTQp9RA",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"customers",
+										"{{customer_id}}",
+										"balance_transactions",
+										"cbtxn_1F89gAGCrGF7V6ZENYTQp9RA"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update a customer balance transaction",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "metadata[order_id]",
+											"value": "1234",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/customers/{{customer_id}}/balance_transactions/cbtxn_1F89gAGCrGF7V6ZENYTQp9RA",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"customers",
+										"{{customer_id}}",
+										"balance_transactions",
+										"cbtxn_1F89gAGCrGF7V6ZENYTQp9RA"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List a customer balance transaction",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/customers/{{customer_id}}/balance_transactions",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"customers",
+										"{{customer_id}}",
+										"balance_transactions"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Customer Tax IDs",
+					"item": [
+						{
+							"name": "Create a tax ID",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "value",
+											"value": "DE123456789",
+											"type": "text"
+										},
+										{
+											"key": "type",
+											"value": "eu_vat",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/customers/{{customer_id}}/tax_ids",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"customers",
+										"{{customer_id}}",
+										"tax_ids"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve a tax ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/customers/{{customer_id}}/tax_ids/txi_1F89lYGCrGF7V6ZEHiQPJgBc",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"customers",
+										"{{customer_id}}",
+										"tax_ids",
+										"txi_1F89lYGCrGF7V6ZEHiQPJgBc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete a tax ID",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/customers/{{customer_id}}/tax_ids/txi_1F89lYGCrGF7V6ZEHiQPJgBc",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"customers",
+										"{{customer_id}}",
+										"tax_ids",
+										"txi_1F89lYGCrGF7V6ZEHiQPJgBc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all tax IDs",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/customers/{{customer_id}}/tax_ids",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"customers",
+										"{{customer_id}}",
+										"tax_ids"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Discounts",
+					"item": [
+						{
+							"name": "Delete a customer discount",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/customers/{{customer_id}}/discount",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"customers",
+										"{{customer_id}}",
+										"discount"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete a subscription discount",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/subscriptions/sub_Elx5JUFaU4HftA/discount",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"subscriptions",
+										"sub_Elx5JUFaU4HftA",
+										"discount"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Invoices",
+					"item": [
+						{
+							"name": "Create an Invoice",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "customer",
+											"value": "{{customer_id}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/invoices",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"invoices"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve an invoice",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/invoices/in_1EIPAtGCrGF7V6ZER5jrEJ54",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"invoices",
+										"in_1EIPAtGCrGF7V6ZER5jrEJ54"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update an invoice",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "metadata[order_id]",
+											"value": "1234",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/invoices/in_1EIPAtGCrGF7V6ZER5jrEJ54",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"invoices",
+										"in_1EIPAtGCrGF7V6ZER5jrEJ54"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete a draft invoice",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/invoices/in_1EIPAtGCrGF7V6ZER5jrEJ54",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"invoices",
+										"in_1EIPAtGCrGF7V6ZER5jrEJ54"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Finalize an invoice",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/invoices/in_1EouITEkd1HXinYnlrzTWhnC/finalize",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"invoices",
+										"in_1EouITEkd1HXinYnlrzTWhnC",
+										"finalize"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Pay an invoice",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/invoices/in_1EIPAtGCrGF7V6ZER5jrEJ54/pay",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"invoices",
+										"in_1EIPAtGCrGF7V6ZER5jrEJ54",
+										"pay"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send invoice for manual payment",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/invoices/in_1EIPAtGCrGF7V6ZER5jrEJ54/send",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"invoices",
+										"in_1EIPAtGCrGF7V6ZER5jrEJ54",
+										"send"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Void an invoice",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/invoices/in_1EIPAtGCrGF7V6ZER5jrEJ54/void",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"invoices",
+										"in_1EIPAtGCrGF7V6ZER5jrEJ54",
+										"void"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Mark an invoice as uncollectible",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/invoices/in_1EIPAtGCrGF7V6ZER5jrEJ54/mark_uncollectible",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"invoices",
+										"in_1EIPAtGCrGF7V6ZER5jrEJ54",
+										"mark_uncollectible"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve an invoice's line items",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/invoices/in_1EIPAtGCrGF7V6ZER5jrEJ54/lines",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"invoices",
+										"in_1EIPAtGCrGF7V6ZER5jrEJ54",
+										"lines"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve an Upcoming Invoice",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/invoices/upcoming?customer={{customer_id}}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"invoices",
+										"upcoming"
+									],
+									"query": [
+										{
+											"key": "customer",
+											"value": "{{customer_id}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve an upcoming invoice's line items",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/invoices/upcoming/lines?customer={{customer_id}}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"invoices",
+										"upcoming",
+										"lines"
+									],
+									"query": [
+										{
+											"key": "customer",
+											"value": "{{customer_id}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all invoices",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/invoices?limit=3",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"invoices"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Invoice Items",
+					"item": [
+						{
+							"name": "Create an invoice item",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "currency",
+											"value": "usd",
+											"type": "text"
+										},
+										{
+											"key": "customer",
+											"value": "{{customer_id}}",
+											"type": "text"
+										},
+										{
+											"key": "amount",
+											"value": "2500",
+											"type": "text"
+										},
+										{
+											"key": "currency",
+											"value": "usd",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "One-time setup fee",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/invoiceitems",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"invoiceitems"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve an invoice item",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/invoiceitems/ii_1F8A5xGCrGF7V6ZEFE4XHOGN",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"invoiceitems",
+										"ii_1F8A5xGCrGF7V6ZEFE4XHOGN"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update an invoice item",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "metadata[order_id]",
+											"value": "1234",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/invoiceitems/ii_1F8A5xGCrGF7V6ZEFE4XHOGN",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"invoiceitems",
+										"ii_1F8A5xGCrGF7V6ZEFE4XHOGN"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete an invoice item",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/invoiceitems/ii_1F8A5xGCrGF7V6ZEFE4XHOGN",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"invoiceitems",
+										"ii_1F8A5xGCrGF7V6ZEFE4XHOGN"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all invoice items",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/invoiceitems",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"invoiceitems"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Plans",
+					"item": [
+						{
+							"name": "Create a plan",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "currency",
+											"value": "usd",
+											"type": "text"
+										},
+										{
+											"key": "interval",
+											"value": "month",
+											"type": "text"
+										},
+										{
+											"key": "product",
+											"value": "prod_FaQ9vndldmH66F",
+											"type": "text"
+										},
+										{
+											"key": "amount",
+											"value": "1000",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/plans",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"plans"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve a plan",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/plans/plan_FaQBlI3RnWDMgn",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"plans",
+										"plan_FaQBlI3RnWDMgn"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update a plan",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "metadata[test]",
+											"value": "test metadata",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/plans/plan_FaQBlI3RnWDMgn",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"plans",
+										"plan_FaQBlI3RnWDMgn"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete a plan",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/plans/plan_FaQBlI3RnWDMgn",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"plans",
+										"plan_FaQBlI3RnWDMgn"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all plans",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/plans",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"plans"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Products",
+					"item": [
+						{
+							"name": "Create a product",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{secret_key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Monthly Membership",
+											"type": "text"
+										},
+										{
+											"key": "type",
+											"value": "service",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/products",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve a product",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/products/prod_FdR6041c1jsmuO",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"products",
+										"prod_FdR6041c1jsmuO"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update a product",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "metadata[order_id]",
+											"value": "1234",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/products/prod_FdR6041c1jsmuO",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"products",
+										"prod_FdR6041c1jsmuO"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete a product",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/products/prod_FdR6041c1jsmuO",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"products",
+										"prod_FdR6041c1jsmuO"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all Products",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/products?limit=3",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"products"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Subscriptions",
+					"item": [
+						{
+							"name": "Create a subscription",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "customer",
+											"value": "{{customer_id}}",
+											"type": "text"
+										},
+										{
+											"key": "items[0][plan]",
+											"value": "plan_FVFE16TUQxtmPg",
+											"type": "text"
+										},
+										{
+											"key": "billing_cycle_anchor",
+											"value": "1556694000",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "prorate",
+											"value": "true",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/subscriptions",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"subscriptions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve a subscription",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/subscriptions/sub_FdRSPHUV782ihQ",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"subscriptions",
+										"sub_FdRSPHUV782ihQ"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update a subscription",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "metadata[order_id]",
+											"value": "8675",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/subscriptions/sub_FdRSPHUV782ihQ",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"subscriptions",
+										"sub_FdRSPHUV782ihQ"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cancel a subscription",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/subscriptions/sub_FdRSPHUV782ihQ",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"subscriptions",
+										"sub_FdRSPHUV782ihQ"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List subscriptions",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/subscriptions",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"subscriptions"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Subscription Items",
+					"item": [
+						{
+							"name": "Create a subscription item",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "subscription",
+											"value": "sub_Elx5JUFaU4HftA",
+											"type": "text"
+										},
+										{
+											"key": "plan",
+											"value": "plan_FVFE16TUQxtmPg",
+											"type": "text"
+										},
+										{
+											"key": "quantity",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/subscription_items",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"subscription_items"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve a subscription item",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/subscription_items/si_FdQf0HawiKF5ob",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"subscription_items",
+										"si_FdQf0HawiKF5ob"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update a subscription item",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "metadata[order_id]",
+											"value": "1234",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/subscription_items/si_FdQf0HawiKF5ob",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"subscription_items",
+										"si_FdQf0HawiKF5ob"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete a subscription item",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/subscription_items/si_FdQf0HawiKF5ob",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"subscription_items",
+										"si_FdQf0HawiKF5ob"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all subscription items",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/subscription_items?subscription=sub_Elx5JUFaU4HftA",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"subscription_items"
+									],
+									"query": [
+										{
+											"key": "subscription",
+											"value": "sub_Elx5JUFaU4HftA"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Subscription Schedules",
+					"item": [
+						{
+							"name": "Create a schedule",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{secret_key}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "customer",
+											"value": "{{customer_id}}",
+											"type": "text"
+										},
+										{
+											"key": "phases[0][plans][0][plan]",
+											"value": "plan_FaQBlI3RnWDMgn",
+											"type": "text"
+										},
+										{
+											"key": "phases[0][iterations]",
+											"value": "6",
+											"type": "text"
+										},
+										{
+											"key": "renewal_behavior",
+											"value": "none",
+											"type": "text"
+										},
+										{
+											"key": "start_date",
+											"value": "1565821543",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/subscription_schedules",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"subscription_schedules"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Tax Rates",
+					"item": [
+						{
+							"name": "Create a tax rate",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "display_name",
+											"value": "VAT",
+											"type": "text"
+										},
+										{
+											"key": "inclusive",
+											"value": "false",
+											"type": "text"
+										},
+										{
+											"key": "percentage",
+											"value": "19",
+											"type": "text"
+										},
+										{
+											"key": "jurisdiction",
+											"value": "DE",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "VAT Germany",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/tax_rates",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"tax_rates"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieves a tax rate",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/tax_rates/txr_1FAIvHGCrGF7V6ZEGIikhJdm",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"tax_rates",
+										"txr_1FAIvHGCrGF7V6ZEGIikhJdm"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update a tax rate",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "active",
+											"value": "true",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/tax_rates/txr_1FAIvHGCrGF7V6ZEGIikhJdm",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"tax_rates",
+										"txr_1FAIvHGCrGF7V6ZEGIikhJdm"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all tax rates",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/tax_rates",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"tax_rates"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Usage Records",
+					"item": [
+						{
+							"name": "Create a usage record",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "quantity",
+											"value": "50",
+											"type": "text"
+										},
+										{
+											"key": "timestamp",
+											"value": "1558027384",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/subscription_items/si_F4ZSoPueLzWuHv/usage_records",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"subscription_items",
+										"si_F4ZSoPueLzWuHv",
+										"usage_records"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all subscription item period summaries",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/subscription_items/si_F4ZSoPueLzWuHv/usage_record_summaries",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"subscription_items",
+										"si_F4ZSoPueLzWuHv",
+										"usage_record_summaries"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Connect",
+			"item": [
+				{
+					"name": "Accounts",
+					"item": [
+						{
+							"name": "Create an account",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "type",
+											"value": "custom",
+											"type": "text"
+										},
+										{
+											"key": "country",
+											"value": "US",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "bob@example.com",
+											"type": "text"
+										},
+										{
+											"key": "requested_capabilities[]",
+											"value": "transfers",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/accounts",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"accounts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve account",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/accounts/{{connect_account_id}}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"accounts",
+										"{{connect_account_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update an account",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "metadata[order_id]",
+											"value": "1234",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/accounts/{{connect_account_id}}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"accounts",
+										"{{connect_account_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete an account",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/accounts/acct_1F5FVWFjJ5sbYUYr",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"accounts",
+										"acct_1F5FVWFjJ5sbYUYr"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reject an account",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "reason",
+											"value": "fraud",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/accounts/acct_1F9EubBrJgej6O7E/reject",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"accounts",
+										"acct_1F9EubBrJgej6O7E",
+										"reject"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all connected accounts",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/accounts?limit=3",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"accounts"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create a login link",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer  {{secret_key}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/accounts/acct_1EPdQlDEQaE4g9hn/login_links",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"accounts",
+										"acct_1EPdQlDEQaE4g9hn",
+										"login_links"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "aa96063e-8646-4b78-9607-629b34b4a141",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "629f1931-f25e-49a1-af13-e3bbe6d37533",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Account Links",
+					"item": [
+						{
+							"name": "Create an account link",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "account",
+											"value": "{{connect_account_id}}",
+											"type": "text"
+										},
+										{
+											"key": "failure_url",
+											"value": "https://example.com/failure",
+											"type": "text"
+										},
+										{
+											"key": "success_url",
+											"value": "https://example.com/failure",
+											"type": "text"
+										},
+										{
+											"key": "type",
+											"value": "custom_account_verification",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/account_links",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"account_links"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Application Fees",
+					"item": [
+						{
+							"name": "Retrieve an application fee",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/application_fees/fee_1F9F5mCYlx8NNrIeem2p7zcW",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"application_fees",
+										"fee_1F9F5mCYlx8NNrIeem2p7zcW"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all application fees",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/application_fees",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"application_fees"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Application Fee Refunds",
+					"item": [
+						{
+							"name": "Create an application fee refund",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/application_fees/fee_1F9F5mCYlx8NNrIeem2p7zcW/refund",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"application_fees",
+										"fee_1F9F5mCYlx8NNrIeem2p7zcW",
+										"refund"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve an application fee refund",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/application_fees/fee_1F9F5mCYlx8NNrIeem2p7zcW/refunds/fr_1F9F7CCYlx8NNrIeTeqCYRrs",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"application_fees",
+										"fee_1F9F5mCYlx8NNrIeem2p7zcW",
+										"refunds",
+										"fr_1F9F7CCYlx8NNrIeTeqCYRrs"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update an application fee refund",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "metadata[order_id]",
+											"value": "12345",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/application_fees/fee_1F9F5mCYlx8NNrIeem2p7zcW/refunds/fr_1F9F7CCYlx8NNrIeTeqCYRrs",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"application_fees",
+										"fee_1F9F5mCYlx8NNrIeem2p7zcW",
+										"refunds",
+										"fr_1F9F7CCYlx8NNrIeTeqCYRrs"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all application fee refunds",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/application_fees/fee_1F9F5mCYlx8NNrIeem2p7zcW/refunds",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"application_fees",
+										"fee_1F9F5mCYlx8NNrIeem2p7zcW",
+										"refunds"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Capabilities",
+					"item": [
+						{
+							"name": "Retrieve an Account Capability",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/accounts/{{connect_account_id}}/capabilities/card_payments",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"accounts",
+										"{{connect_account_id}}",
+										"capabilities",
+										"card_payments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update an Account Capability",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "requested",
+											"value": "true",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/accounts/{{connect_account_id}}/capabilities/platform_payments",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"accounts",
+										"{{connect_account_id}}",
+										"capabilities",
+										"platform_payments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all Account Capabilities",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/accounts/{{connect_account_id}}/capabilities",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"accounts",
+										"{{connect_account_id}}",
+										"capabilities"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Country Specs",
+					"item": [
+						{
+							"name": "List Country Specs",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/country_specs?limit=3",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"country_specs"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve a Country Spec",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/country_specs/US",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"country_specs",
+										"US"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "External Accounts",
+					"item": [
+						{
+							"name": "Create a bank account",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "external_account",
+											"value": "btok_1F5FfKGCrGF7V6ZEToDoKrPk",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/accounts/{{connect_account_id}}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"accounts",
+										"{{connect_account_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve a bank account",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/accounts/{{connect_account_id}}/external_accounts/ba_1F5FfhCYlx8NNrIedWPm5dHa",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"accounts",
+										"{{connect_account_id}}",
+										"external_accounts",
+										"ba_1F5FfhCYlx8NNrIedWPm5dHa"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update a bank account",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "metadata[order_id]",
+											"value": "1234",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/accounts/{{connect_account_id}}/external_accounts/ba_1F5FfhCYlx8NNrIedWPm5dHa",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"accounts",
+										"{{connect_account_id}}",
+										"external_accounts",
+										"ba_1F5FfhCYlx8NNrIedWPm5dHa"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all bank accounts",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/accounts/{{connect_account_id}}/external_accounts?object=bank_account",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"accounts",
+										"{{connect_account_id}}",
+										"external_accounts"
+									],
+									"query": [
+										{
+											"key": "object",
+											"value": "bank_account"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create a card",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "external_account",
+											"value": "tok_mastercard_debit",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/accounts/{{connect_account_id}}/external_accounts",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"accounts",
+										"{{connect_account_id}}",
+										"external_accounts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve a card",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/accounts/{{connect_account_id}}/external_accounts/card_1F9vu4CYlx8NNrIeJWEAxVky",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"accounts",
+										"{{connect_account_id}}",
+										"external_accounts",
+										"card_1F9vu4CYlx8NNrIeJWEAxVky"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update a card",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Jenny Rosen",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/accounts/{{connect_account_id}}/external_accounts/card_1F9vu4CYlx8NNrIeJWEAxVky",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"accounts",
+										"{{connect_account_id}}",
+										"external_accounts",
+										"card_1F9vu4CYlx8NNrIeJWEAxVky"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete a card",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/accounts/{{connect_account_id}}/external_accounts/card_1F9vu4CYlx8NNrIeJWEAxVky",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"accounts",
+										"{{connect_account_id}}",
+										"external_accounts",
+										"card_1F9vu4CYlx8NNrIeJWEAxVky"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all cards",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/accounts/{{connect_account_id}}/external_accounts?object=card",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"accounts",
+										"{{connect_account_id}}",
+										"external_accounts"
+									],
+									"query": [
+										{
+											"key": "object",
+											"value": "card"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Person",
+					"item": [
+						{
+							"name": "Create a person",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "first_name",
+											"value": "Jane",
+											"type": "text"
+										},
+										{
+											"key": "last_name",
+											"value": "Diaz",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/accounts/{{connect_account_id}}/persons",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"accounts",
+										"{{connect_account_id}}",
+										"persons"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve a person",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/accounts/{{connect_account_id}}/persons/person_FezDQ8xIe609RE",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"accounts",
+										"{{connect_account_id}}",
+										"persons",
+										"person_FezDQ8xIe609RE"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update a person",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "first_name",
+											"value": "Matt",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/accounts/{{connect_account_id}}/persons/person_FezDQ8xIe609RE",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"accounts",
+										"{{connect_account_id}}",
+										"persons",
+										"person_FezDQ8xIe609RE"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete a person",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/accounts/{{connect_account_id}}/persons/person_FezDQ8xIe609RE",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"accounts",
+										"{{connect_account_id}}",
+										"persons",
+										"person_FezDQ8xIe609RE"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all persons",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/accounts/{{connect_account_id}}/persons",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"accounts",
+										"{{connect_account_id}}",
+										"persons"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Top-ups",
+					"item": [
+						{
+							"name": "Create a top-up",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "amount",
+											"value": "200",
+											"type": "text"
+										},
+										{
+											"key": "currency",
+											"value": "usd",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Top-up Jenny Rosen",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/topups",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"topups"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve a top-up",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/topups/tu_123456789",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"topups",
+										"tu_123456789"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update a top-up",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "metadata[order_id]",
+											"value": "1234",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/topups/tu_123456789",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"topups",
+										"tu_123456789"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all top-ups",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/topups",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"topups"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cancel a top-up",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/topups/tu_123456789/cancel",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"topups",
+										"tu_123456789",
+										"cancel"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "397f5601-ed02-44d6-8f95-e8a5d3e1c736",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "6024ca28-64bb-46bd-9994-129933285fc1",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Transfers",
+					"item": [
+						{
+							"name": "Create a transfer",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "amount",
+											"value": "400",
+											"type": "text"
+										},
+										{
+											"key": "currency",
+											"value": "usd",
+											"type": "text"
+										},
+										{
+											"key": "destination",
+											"value": "{{connect_account_id}}",
+											"type": "text"
+										},
+										{
+											"key": "transfer_group",
+											"value": "ORDER_95",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/transfers",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"transfers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve a transfer",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/transfers/tr_1F9F5mGCrGF7V6ZEV5aTL7Sj",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"transfers",
+										"tr_1F9F5mGCrGF7V6ZEV5aTL7Sj"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update a transfer",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "metadata[order_id]",
+											"value": "1234",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/transfers/tr_1F9F5mGCrGF7V6ZEV5aTL7Sj",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"transfers",
+										"tr_1F9F5mGCrGF7V6ZEV5aTL7Sj"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all transfers",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{secret_key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://api.stripe.com/v1/transfers?limit=3",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"transfers"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Transfer Reversals",
+					"item": [
+						{
+							"name": "Create a transfer reversal",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/transfers/tr_1F9F5mGCrGF7V6ZEV5aTL7Sj/reversals",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"transfers",
+										"tr_1F9F5mGCrGF7V6ZEV5aTL7Sj",
+										"reversals"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve a transfer reversal",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/transfers/tr_1F9F5mGCrGF7V6ZEV5aTL7Sj/reversals/trr_1F9zx7GCrGF7V6ZEtDzIHXVC",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"transfers",
+										"tr_1F9F5mGCrGF7V6ZEV5aTL7Sj",
+										"reversals",
+										"trr_1F9zx7GCrGF7V6ZEtDzIHXVC"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update a transfer reversal",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "metadata[order_id]",
+											"value": "1234",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/transfers/tr_1F9F5mGCrGF7V6ZEV5aTL7Sj/reversals/trr_1F9zx7GCrGF7V6ZEtDzIHXVC",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"transfers",
+										"tr_1F9F5mGCrGF7V6ZEV5aTL7Sj",
+										"reversals",
+										"trr_1F9zx7GCrGF7V6ZEtDzIHXVC"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all reversals",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/transfers/tr_1F9F5mGCrGF7V6ZEV5aTL7Sj/reversals",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"transfers",
+										"tr_1F9F5mGCrGF7V6ZEV5aTL7Sj",
+										"reversals"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Issuing",
+			"item": [
+				{
+					"name": "Authorizations",
+					"item": [
+						{
+							"name": "List all Authorizations",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/issuing/authorizations",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"issuing",
+										"authorizations"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Cardholders",
+					"item": [
+						{
+							"name": "List all cardholders",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{secret_key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://api.stripe.com/v1/issuing/cardholders",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"issuing",
+										"cardholders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update cardholder",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{secret_key}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "joecardholder@test.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/issuing/cardholders/ich_1EVhV6GZxoUWXy90Z3P0ldcQ",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"issuing",
+										"cardholders",
+										"ich_1EVhV6GZxoUWXy90Z3P0ldcQ"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Cards",
+					"item": [
+						{
+							"name": "Retrieve a card",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{secret_key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://api.stripe.com/v1/issuing/cards/ic_1EVhVVGZxoUWXy90jus6Zrf7",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"issuing",
+										"cards",
+										"ic_1EVhVVGZxoUWXy90jus6Zrf7"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create a card",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{secret_key}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "currency",
+											"value": "usd",
+											"type": "text"
+										},
+										{
+											"key": "type",
+											"value": "physical",
+											"type": "text"
+										},
+										{
+											"key": "cardholder",
+											"value": "ich_1EfxdaGZxoUWXy90ENVPifcf",
+											"type": "text"
+										},
+										{
+											"key": "shipping[address][city]",
+											"value": "San Francisco",
+											"type": "text"
+										},
+										{
+											"key": "shipping[address][country]",
+											"value": "US",
+											"type": "text"
+										},
+										{
+											"key": "shipping[address][line1]",
+											"value": "510 Townsend St",
+											"type": "text"
+										},
+										{
+											"key": "shipping[address][state]",
+											"value": "California",
+											"type": "text"
+										},
+										{
+											"key": "shipping[address][postal_code]",
+											"value": "94103",
+											"type": "text"
+										},
+										{
+											"key": "shipping[name]",
+											"value": "Matt Mitchell",
+											"type": "text"
+										},
+										{
+											"key": "shipping[type]",
+											"value": "individual",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "active",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/issuing/cards",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"issuing",
+										"cards"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Terminal",
+			"item": [
+				{
+					"name": "Connection Tokens",
+					"item": [
+						{
+							"name": "Create a connection token",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/terminal/connection_tokens",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"terminal",
+										"connection_tokens"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Locations",
+					"item": [
+						{
+							"name": "Create a location",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "address[line1]",
+											"value": "1234 Main Street",
+											"type": "text"
+										},
+										{
+											"key": "address[city]",
+											"value": "San Francisco",
+											"type": "text"
+										},
+										{
+											"key": "address[country]",
+											"value": "US",
+											"type": "text"
+										},
+										{
+											"key": "address[postal_code]",
+											"value": "94111",
+											"type": "text"
+										},
+										{
+											"key": "display_name",
+											"value": "My First Store",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/terminal/locations",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"terminal",
+										"locations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve a location",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/terminal/locations/tml_DVpoBAHbt8zG4e",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"terminal",
+										"locations",
+										"tml_DVpoBAHbt8zG4e"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update a location",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "display_name",
+											"value": "My Second Store",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/terminal/locations/tml_DVpoBAHbt8zG4e",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"terminal",
+										"locations",
+										"tml_DVpoBAHbt8zG4e"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete a location",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/terminal/locations/tml_DVpoBAHbt8zG4e",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"terminal",
+										"locations",
+										"tml_DVpoBAHbt8zG4e"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all locations",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/terminal/locations",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"terminal",
+										"locations"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Readers",
+					"item": [
+						{
+							"name": "Register a Reader",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "registration_code",
+											"value": "amaranth-rosy-serrano",
+											"type": "text"
+										},
+										{
+											"key": "label",
+											"value": "Desk Reader",
+											"type": "text"
+										},
+										{
+											"key": "location",
+											"value": "My First Location",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/terminal/readers",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"terminal",
+										"readers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve a Reader",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/terminal/readers/tmr_62330545-b12f-4bbf-8bf1-280e8f2b1a63",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"terminal",
+										"readers",
+										"tmr_62330545-b12f-4bbf-8bf1-280e8f2b1a63"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update a Reader",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "label",
+											"value": "Blue Rabbit",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/terminal/readers/tmr_62330545-b12f-4bbf-8bf1-280e8f2b1a63",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"terminal",
+										"readers",
+										"tmr_62330545-b12f-4bbf-8bf1-280e8f2b1a63"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all Readers",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{secret_key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://api.stripe.com/v1/terminal/readers",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"terminal",
+										"readers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete a Reader",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/terminal/readers/tmr_62330545-b12f-4bbf-6bf1-280e8f2b1a64",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"terminal",
+										"readers",
+										"tmr_62330545-b12f-4bbf-6bf1-280e8f2b1a64"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "Orders",
+					"item": [
+						{
+							"name": "Create an order",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "items[][type]",
+											"value": "sku",
+											"type": "text"
+										},
+										{
+											"key": "items[][parent]",
+											"value": "sku_Fp6CCmSdpThQr9",
+											"type": "text"
+										},
+										{
+											"key": "currency",
+											"value": "usd",
+											"type": "text"
+										},
+										{
+											"key": "shipping[name]",
+											"value": "Jenny Rosen",
+											"type": "text"
+										},
+										{
+											"key": "shipping[address][line1]",
+											"value": "1234 Main Street",
+											"type": "text"
+										},
+										{
+											"key": "shipping[address][city]",
+											"value": "San Francisco",
+											"type": "text"
+										},
+										{
+											"key": "shipping[address][country]",
+											"value": "US",
+											"type": "text"
+										},
+										{
+											"key": "shipping[address][state]",
+											"value": "CA",
+											"type": "text"
+										},
+										{
+											"key": "shipping[address][postal_code]",
+											"value": "94111",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "jenny.rosen@example.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/orders",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve an order",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/orders/or_1FJS10GCrGF7V6ZE5it3STZC",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"orders",
+										"or_1FJS10GCrGF7V6ZE5it3STZC"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update an order",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "metadata[order_id]",
+											"value": "1234",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/orders/or_1FJS10GCrGF7V6ZE5it3STZC",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"orders",
+										"or_1FJS10GCrGF7V6ZE5it3STZC"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Pay an order",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "customer",
+											"value": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/orders/or_1FJS10GCrGF7V6ZE5it3STZC/pay",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"orders",
+										"or_1FJS10GCrGF7V6ZE5it3STZC",
+										"pay"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Webhooks",
+			"item": [
+				{
+					"name": "Create a webhook endpoint",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "url",
+									"value": "https://example.com/my/webhook/endpoint",
+									"type": "text"
+								},
+								{
+									"key": "enabled_events[]",
+									"value": "*",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.stripe.com/v1/webhook_endpoints",
+							"protocol": "https",
+							"host": [
+								"api",
+								"stripe",
+								"com"
+							],
+							"path": [
+								"v1",
+								"webhook_endpoints"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Issuing",
+			"item": [
+				{
+					"name": "Transactions",
+					"item": [
+						{
+							"name": "List all transactions",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Cards",
+					"item": [
+						{
+							"name": "Retrieve a card",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update a card",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "sk_test_4FDLoJVf93VHE74kFyTpuujw0037dQUUOG",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/issuing/cards/ic_1FZOnfGZxoUWXy90AQEgRIwr",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"issuing",
+										"cards",
+										"ic_1FZOnfGZxoUWXy90AQEgRIwr"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{secret_key}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "c145b477-3d94-4a6a-988f-cf644b482bd6",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "b977e487-8af9-48c7-b88c-e4f04c0d8c85",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
