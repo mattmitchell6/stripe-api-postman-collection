@@ -9,7 +9,9 @@
 
 Get up and running with this Stripe API Postman collection
 
-1. Import the Postman collection. Copy the [stripe-api-postman-collection.json](https://github.com/mattmitchell6/stripe-api-postman-collection/blob/master/stripe-api-postman-collection.json) contents and paste in the **Import > Paste Raw Text** section.
+1. Import the Postman collection through either of the 2 methods specified below.
+* Import the latest version [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/ae1def598cfe7f2c5d67)
+* Copy the [stripe-api-postman-collection.json](https://github.com/mattmitchell6/stripe-api-postman-collection/blob/master/stripe-api-postman-collection.json) contents and paste in the **Import > Paste Raw Text** section.
 
 2. This collection takes advantage of Postman [variables and environments](https://learning.getpostman.com/docs/postman/variables-and-environments/variables/#understanding-variables-and-environments) to store/access your Stripe secret key and commonly used Stripe object IDs.
 
