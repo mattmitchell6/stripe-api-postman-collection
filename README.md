@@ -1,4 +1,4 @@
-#### A Stripe API Postman Collection covering over 200 Stripe API endpoints
+#### A Stripe API Postman collection covering over 200 Stripe API endpoints
 
 ## Prerequisites
 [Postman](https://www.getpostman.com/downloads/)
@@ -7,9 +7,9 @@
 
 ## Instructions
 
-Get up and running with this Stripe API Postman Collection
+Get up and running with this Stripe API Postman collection
 
-1. Import the Postman Collection. Copy the [stripe-api-postman-collection.json](https://github.com/mattmitchell6/stripe-api-postman-collection/blob/master/stripe-api-postman-collection.json) contents and paste in the **Import > Paste Raw Text** section.
+1. Import the Postman collection. Copy the [stripe-api-postman-collection.json](https://github.com/mattmitchell6/stripe-api-postman-collection/blob/master/stripe-api-postman-collection.json) contents and paste in the **Import > Paste Raw Text** section.
 
 2. This collection takes advantage of Postman [variables and environments](https://learning.getpostman.com/docs/postman/variables-and-environments/variables/#understanding-variables-and-environments) to store/access your Stripe secret key and commonly used Stripe object IDs.
 
