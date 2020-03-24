@@ -2213,7 +2213,7 @@
 									]
 								},
 								"url": {
-									"raw": "https://api.stripe.com/v1/customers/{{customer_id}}/sources",
+									"raw": "https://api.stripe.com/v1/customers/{{customer_id}}/sources\n",
 									"protocol": "https",
 									"host": [
 										"api",
@@ -2224,7 +2224,7 @@
 										"v1",
 										"customers",
 										"{{customer_id}}",
-										"sources"
+										"sources\n"
 									]
 								}
 							},
@@ -2323,7 +2323,7 @@
 									]
 								},
 								"url": {
-									"raw": "https://api.stripe.com/v1/customers/{{customer_id}}/sources/ba_1F5EzcGCrGF7V6ZEqlibeus7/verify",
+									"raw": "https://api.stripe.com/v1/customers/{{customer_id}}/sources/ba_1F5EzcGCrGF7V6ZEqlibeus7/verify\n",
 									"protocol": "https",
 									"host": [
 										"api",
@@ -2336,7 +2336,7 @@
 										"{{customer_id}}",
 										"sources",
 										"ba_1F5EzcGCrGF7V6ZEqlibeus7",
-										"verify"
+										"verify\n"
 									]
 								}
 							},
@@ -3942,7 +3942,7 @@
 									]
 								},
 								"url": {
-									"raw": "https://api.stripe.com/v1/invoiceitems",
+									"raw": "https://api.stripe.com/v1/invoiceitems\n",
 									"protocol": "https",
 									"host": [
 										"api",
@@ -3951,7 +3951,7 @@
 									],
 									"path": [
 										"v1",
-										"invoiceitems"
+										"invoiceitems\n"
 									]
 								}
 							},
@@ -4433,7 +4433,7 @@
 										},
 										{
 											"key": "items[0][plan]",
-											"value": "plan_FVFE16TUQxtmPg",
+											"value": "plan_Gt3R5mO7YH5vvc",
 											"type": "text"
 										},
 										{
@@ -4447,6 +4447,11 @@
 											"value": "true",
 											"type": "text",
 											"disabled": true
+										},
+										{
+											"key": "trial_from_plan",
+											"value": "true",
+											"type": "text"
 										}
 									]
 								},
@@ -5860,7 +5865,7 @@
 									]
 								},
 								"url": {
-									"raw": "https://api.stripe.com/v1/accounts/{{connect_account_id}}/external_accounts",
+									"raw": "https://api.stripe.com/v1/accounts/{{connect_account_id}}/external_accounts\n",
 									"protocol": "https",
 									"host": [
 										"api",
@@ -5871,7 +5876,7 @@
 										"v1",
 										"accounts",
 										"{{connect_account_id}}",
-										"external_accounts"
+										"external_accounts\n"
 									]
 								}
 							},
@@ -6627,6 +6632,12 @@
 					],
 					"protocolProfileBehavior": {},
 					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Capabilities",
+					"item": [],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -6637,6 +6648,110 @@
 				{
 					"name": "Authorizations",
 					"item": [
+						{
+							"name": "Retrieve an authorization",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/issuing/authorizations/iauth_1ELxKaGCrGF7V6ZEaHih7SEx",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"issuing",
+										"authorizations",
+										"iauth_1ELxKaGCrGF7V6ZEaHih7SEx"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update an authorization",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "metadata[foo]",
+											"value": "bar",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/issuing/authorizations/iauth_1ELxKaGCrGF7V6ZEaHih7SEx",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"issuing",
+										"authorizations",
+										"iauth_1ELxKaGCrGF7V6ZEaHih7SEx"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Approve an authorization",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/issuing/authorizations/iauth_1ELxKaGCrGF7V6ZEaHih7SEx/approve",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"issuing",
+										"authorizations",
+										"iauth_1ELxKaGCrGF7V6ZEaHih7SEx",
+										"approve"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Decline an authorization",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/issuing/authorizations/iauth_1ELxKaGCrGF7V6ZEaHih7SEx/decline",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"issuing",
+										"authorizations",
+										"iauth_1ELxKaGCrGF7V6ZEaHih7SEx",
+										"decline"
+									]
+								}
+							},
+							"response": []
+						},
 						{
 							"name": "List all Authorizations",
 							"request": {
@@ -6667,6 +6782,124 @@
 					"name": "Cardholders",
 					"item": [
 						{
+							"name": "Create a cardholder",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "billing[address][city]",
+											"value": "San Francisco",
+											"type": "text"
+										},
+										{
+											"key": "billing[address][state]",
+											"value": "CA",
+											"type": "text"
+										},
+										{
+											"key": "billing[address][country]",
+											"value": "US",
+											"type": "text"
+										},
+										{
+											"key": "billing[address][line1]",
+											"value": "510 Townsend St",
+											"type": "text"
+										},
+										{
+											"key": "billing[address][postal_code]",
+											"value": "94103",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "Joe Cardholder",
+											"type": "text"
+										},
+										{
+											"key": "type",
+											"value": "individual",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/issuing/cardholders",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"issuing",
+										"cardholders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve a cardholder",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/issuing/cardholders/ich_1GQK3YGCrGF7V6ZEU7ijTNUe",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"issuing",
+										"cardholders",
+										"ich_1GQK3YGCrGF7V6ZEU7ijTNUe"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update cardholder",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "joecardholder@test.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/issuing/cardholders/ich_1GQK3YGCrGF7V6ZEU7ijTNUe",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"issuing",
+										"cardholders",
+										"ich_1GQK3YGCrGF7V6ZEU7ijTNUe"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "List all cardholders",
 							"request": {
 								"method": "GET",
@@ -6693,51 +6926,6 @@
 								}
 							},
 							"response": []
-						},
-						{
-							"name": "Update cardholder",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer {{secret_key}}",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"value": "application/x-www-form-urlencoded",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "urlencoded",
-									"urlencoded": [
-										{
-											"key": "email",
-											"value": "joecardholder@test.com",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "https://api.stripe.com/v1/issuing/cardholders/ich_1EVhV6GZxoUWXy90Z3P0ldcQ",
-									"protocol": "https",
-									"host": [
-										"api",
-										"stripe",
-										"com"
-									],
-									"path": [
-										"v1",
-										"issuing",
-										"cardholders",
-										"ich_1EVhV6GZxoUWXy90Z3P0ldcQ"
-									]
-								}
-							},
-							"response": []
 						}
 					],
 					"protocolProfileBehavior": {},
@@ -6747,51 +6935,10 @@
 					"name": "Cards",
 					"item": [
 						{
-							"name": "Retrieve a card",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer {{secret_key}}",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "https://api.stripe.com/v1/issuing/cards/ic_1EVhVVGZxoUWXy90jus6Zrf7",
-									"protocol": "https",
-									"host": [
-										"api",
-										"stripe",
-										"com"
-									],
-									"path": [
-										"v1",
-										"issuing",
-										"cards",
-										"ic_1EVhVVGZxoUWXy90jus6Zrf7"
-									]
-								}
-							},
-							"response": []
-						},
-						{
 							"name": "Create a card",
 							"request": {
 								"method": "POST",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer {{secret_key}}",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"value": "application/x-www-form-urlencoded",
-										"type": "text"
-									}
-								],
+								"header": [],
 								"body": {
 									"mode": "urlencoded",
 									"urlencoded": [
@@ -6802,47 +6949,12 @@
 										},
 										{
 											"key": "type",
-											"value": "physical",
+											"value": "virtual",
 											"type": "text"
 										},
 										{
 											"key": "cardholder",
-											"value": "ich_1EfxdaGZxoUWXy90ENVPifcf",
-											"type": "text"
-										},
-										{
-											"key": "shipping[address][city]",
-											"value": "San Francisco",
-											"type": "text"
-										},
-										{
-											"key": "shipping[address][country]",
-											"value": "US",
-											"type": "text"
-										},
-										{
-											"key": "shipping[address][line1]",
-											"value": "510 Townsend St",
-											"type": "text"
-										},
-										{
-											"key": "shipping[address][state]",
-											"value": "California",
-											"type": "text"
-										},
-										{
-											"key": "shipping[address][postal_code]",
-											"value": "94103",
-											"type": "text"
-										},
-										{
-											"key": "shipping[name]",
-											"value": "Matt Mitchell",
-											"type": "text"
-										},
-										{
-											"key": "shipping[type]",
-											"value": "individual",
+											"value": "ich_1GQK3YGCrGF7V6ZEU7ijTNUe",
 											"type": "text"
 										},
 										{
@@ -6864,6 +6976,199 @@
 										"v1",
 										"issuing",
 										"cards"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve a card",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{secret_key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://api.stripe.com/v1/issuing/cards/ic_1GQK5PGCrGF7V6ZEJIr0Sr9b",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"issuing",
+										"cards",
+										"ic_1GQK5PGCrGF7V6ZEJIr0Sr9b"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve card details",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/issuing/cards/ic_1GQK5PGCrGF7V6ZEJIr0Sr9b/details",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"issuing",
+										"cards",
+										"ic_1GQK5PGCrGF7V6ZEJIr0Sr9b",
+										"details"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update a card",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "metadata[foo]",
+											"value": "bar",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/issuing/cards/ic_1GQK5PGCrGF7V6ZEJIr0Sr9b",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"issuing",
+										"cards",
+										"ic_1GQK5PGCrGF7V6ZEJIr0Sr9b"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all cards",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/issuing/cards",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"issuing",
+										"cards"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Transactions",
+					"item": [
+						{
+							"name": "Retrieve a transaction",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/issuing/transactions/ipi_1ELxKbGCrGF7V6ZExh8m18PU",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"issuing",
+										"transactions",
+										"ipi_1ELxKbGCrGF7V6ZExh8m18PU"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update a transaction",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "metadata[foo]",
+											"value": "bar",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.stripe.com/v1/issuing/transactions/ipi_1ELxKbGCrGF7V6ZExh8m18PU",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"issuing",
+										"transactions",
+										"ipi_1ELxKbGCrGF7V6ZExh8m18PU"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all transactions",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/issuing/transactions",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"issuing",
+										"transactions"
 									]
 								}
 							},
